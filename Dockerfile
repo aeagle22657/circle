@@ -1,1 +1,1 @@
-CMD apt update
+RUN apt update
