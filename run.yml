@@ -1,3 +1,18 @@
-build:
-  docker:
-    web: Dockerfile
+apidoc:
+  image:
+    name: node:12.18.3-alpine3.12
+    entrypoint: [""]
+  stage: build
+  variables:
+    APIDOC_CONFIG_PATH: '.'
+    APIDOC_OUTPUT_PATH: 'website_build/'
+    APIDOC_TEMPLATE_PATH: '/usr/local/lib/node_modules/apidoc/template/'
+    APIDOC_VERSION: '0.24.0'
+  script:
+    - npm install apidoc@$APIDOC_VERSION -g
+    - apidoc -c "$APIDOC_CONFIG_PATH" -o "$APIDOC_OUTPUT_PATH" -t "$APIDOC_TEMPLATE_PATH"
+  artifacts:
+    when: always
+    expose_as: "apiDoc build"
+    paths:
+      - "$APIDOC_OUTPUT_PATH"
