@@ -1,6 +1,4 @@
-test:
-    stage: test
-    script:
-        - echo 'test'
-        - ./test.sh
-
+ignored:
+  - DL3001
+  - DL3006
+  - DL3008
